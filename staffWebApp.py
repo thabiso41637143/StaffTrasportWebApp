@@ -43,13 +43,13 @@ createTable()
 st.title("View Trips")
 
 # Input box
-user_input = st.text_input("User ID")
+user_input = st.text_input("User ID").upper()
 
 # Button
 if st.button("View Trips"):
     try:
-        st.success(f"Hello, {user_input.upper()}!")
-        data_link += user_input.upper()
+        st.success(f"Hello, {user_input}!")
+        data_link += user_input
         st.success(data_link)
         data = requests.get(data_link)
         userTrips(json.loads(data.text))
