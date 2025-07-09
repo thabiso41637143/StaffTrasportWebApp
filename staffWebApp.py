@@ -50,7 +50,6 @@ if st.button("View Trips"):
     try:
         st.success(f"Hello, {user_input}!")
         data_link += user_input
-        st.success(data_link)
         data = requests.get(data_link)
         userTrips(json.loads(data.text))
         staff_cursor.execute('select tripId, tripDate, fromLoc, toLoc, tripAmount  from Trips WHERE UPPER(passid) = ?', (user_input,))
