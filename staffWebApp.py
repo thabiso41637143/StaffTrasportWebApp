@@ -16,7 +16,6 @@ def createTable():
             for query in staff_tables.get('create tables'):
                 staff_cursor.execute(query)
             staff_db.commit()
-            st.success('Successfully loaded the tables')
         else:
             st.warning("Failed to load tables")
     except ConnectionError:
