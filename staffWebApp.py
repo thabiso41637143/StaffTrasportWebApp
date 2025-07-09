@@ -54,8 +54,9 @@ if st.button("View Trips"):
         userTrips(json.loads(data.text))
         staff_cursor.execute('select tripId, tripDate, fromLoc, toLoc, tripAmount  from Trips WHERE UPPER(passid) = ?', (user_input,))
         df = pd.DataFrame(staff_cursor.fetchall(), columns=["Trip ID", "Trip Date", "From Location", "To Location", "Trip Amount"])
-        staff_cursor.execute('SELECT COALESCE(SUM(tripAmount), 0.00) AS total_value FROM TripsWHERE UPPER(passid) = ?', (user_input,))
         df["Trip Amount"] = df["Trip Amount"].apply(lambda x: f"R {x:.2f}")
+        staff_cursor.execute('SELECT COALESCE(SUM(tripAmount), 0.00) AS total_value FROM Trips WHERE UPPER(passid) = ?', (user_input,))
+        
         st.success(f"Your outstanding amount is R {staff_cursor.fetchall()[0][0]:.2f}")
         st.write("List of unpaid trips")
         st.table(df)
