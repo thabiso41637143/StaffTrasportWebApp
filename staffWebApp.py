@@ -49,7 +49,7 @@ user_input = st.text_input("User ID")
 if st.button("View Trips"):
     try:
         st.success(f"Hello, {user_input}!")
-        data = requests.get(data_link + user_input)
+        data = requests.get(data_link + user_input.upper())
         userTrips(json.loads(data.text))
         staff_cursor.execute('select tripId, tripDate, fromLoc, toLoc, tripAmount  from Trips WHERE UPPER(passid) = ?', (user_input,))
         df = pd.DataFrame(staff_cursor.fetchall(), columns=["Trip ID", "Trip Date", "From Location", "To Location", "Trip Amount"])
