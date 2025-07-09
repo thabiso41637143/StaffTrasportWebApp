@@ -39,7 +39,7 @@ data_link = "https://script.google.com/macros/s/AKfycbyZeOUxL5wj-shkOiysBLaLstwq
 
 createTable()
 # Title
-st.title("View Trips")
+st.title("View My Trips")
 
 # Input box
 user_input = st.text_input("User ID").upper()
