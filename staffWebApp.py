@@ -45,7 +45,7 @@ st.title("View My Trips")
 user_input = st.text_input("User ID").upper()
 
 # Button
-if st.button("View Trips"):
+if st.button("View My Trips"):
     try:
         st.success(f"Hello, {user_input}!")
         data_link += user_input
